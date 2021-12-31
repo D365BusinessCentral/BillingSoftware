@@ -1,0 +1,7 @@
+1.Python should be installed in the windows PC
+2.Python Extension by Microsoft should be installed in VS Code
+3.Environment Variable should be added in myPC peroperties.. Userwise from %appData%>>Local>>Programs>>Python
+4.Project should be located in user folder like -documents, Desktop etc. then only it accepts below commands
+5.Install flask in VS code Terminal--pip install flask 
+6.Install Flask-SQLAlchemy in VS code Terminal--pip install flask-sqlalchemy
+7.Install flask-login in VS Code --pip install flask-login

@@ -1,0 +1,88 @@
+{% extends "base.html" %} {% block title %}Add Test{% endblock %} {% block testnavbar %}
+<a class="nav-item nav-link" id="Tests" href="/Tests">Tests</a> {% endblock %} {% block content %}
+
+
+<form action="/UpdateTest/{{ TestData.id }}" method="POST">
+    <h4 align="center">Update Test details</h4>
+    <div class="form-row">
+        <div class="col-md-4 mb-3">
+            <label for="TestName">Test Name</label>
+            <input type="text" maxlength="50" class="form-control" id="TestName" name="TestName" placeholder="Test Name" value="{{ TestData.Name }}" required>
+        </div>
+
+        <div class="col-md-4 mb-3">
+            <label for="TestType">Test Type</label>
+            <select class="form-control" id="TestType" name="TestType">
+                <option class="form-control" value="{{ TestData.Test_Type_Id }}" selected>{{ TestData.Test_Type_Name }}</option>
+                {% for TestType in user.Test_Types %}
+                    <option class="form-control" value="{{ TestType.id }}">{{ TestType.Name }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="col-md-4 mb-3">
+            <label for="TestAmount">Test Amount</label>
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="ForTestAmount">Rs.</span>
+                </div>
+                <input type="text" maxlength="5" class="form-controld" id="TestAmount" name="TestAmount" placeholder="0.00" value="{{ TestData.Fee_Amount }}" aria-describedby="inputGroupPrepend3" required>
+
+            </div>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="col-md-4 mb-3">
+            <label for="DCPAmount">DCP Amount</label>
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="ForDCPAmount">Rs.</span>
+                </div>
+                <input type="text" maxlength="5" class="form-controld" id="DCPAmount" name="DCPAmount" placeholder="0.00" value="{{ TestData.DCP_Amount }}" aria-describedby="DCPAmount" required>
+
+            </div>
+        </div>
+        <div class="col-md-4 mb-3">
+            <label for="ACPAmount">ACP Amount</label>
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="ForACPAmount">Rs.</span>
+                </div>
+                <input type="text" maxlength="5" class="form-controld" id="ACPAmount" name="ACPAmount" placeholder="0.00" value="{{ TestData.ACP_Amount }}" aria-describedby="ACPAmount">
+
+            </div>
+        </div>
+        <div class="col-md-4 mb-3">
+            <label for="ReportingAmount">Reporting Amount</label>
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="ForReportingAmount">Rs.</span>
+                </div>
+                <input type="text" maxlength="5" class="form-controld" id="ReportingAmount" name="ReportingAmount" value="{{ TestData.Reporting_Amount }}" placeholder="0.00" aria-describedby="ReportingAmount" required>
+
+            </div>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="col-md-4 mb-3">
+            <label for="FilmQuantity">Film Quantity</label>
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="ForFilmQuantity">No.</span>
+                </div>
+                <input type="text" maxlength="2" class="form-controld" id="FilmQuantity" name="FilmQuantity" value="{{ TestData.Film_Quantity }}" placeholder="0" aria-describedby="FilmQuantity" required>
+
+            </div>
+        </div>
+        <div class="col-md-4 mb-3">
+            <label for="Contrast">Contrast</label>
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="ForContrast">ml.</span>
+                </div>
+                <input type="text" maxlength="3" class="form-controld" id="Contrast" name="Contrast" value="{{ TestData.Contrast }}" placeholder="0" aria-describedby="Contrast">
+            </div>
+        </div>
+    </div>
+    <center><button class="btn btn-primary" type="submit">Submit</button></center>
+</form>
+{% endblock %}

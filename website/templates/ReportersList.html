@@ -1,0 +1,40 @@
+{% extends "base.html" %} {% block title %}Reporters{% endblock %} {% block reporternavbar %}
+<a class="nav-item nav-link" id="AddReporters" href="/AddReporters">Add Reporting Person</a> {% endblock %} {% block content %}
+
+<h4 align="center">Reporting Persons</h4>
+<table class="table table-hover table-dark">
+    <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">NAME</th>
+            <th scope="col">MOBILE</th>
+            <th scope="col">QUALIFICATIONS</th>
+            <th scope="col">SPECIALITY</th>
+            <th scope="col">ADDRESS</th>
+            <th scope="col">LOCALITY</th>
+            <th scope="col">MODIFY</th>
+            <th scope="col">DELETE</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for reporter in Reporters.items %}
+        <tr>
+            <th scope="row">{{ reporter.id }}</th>
+            <td>{{ reporter.Name }}</td>
+            <td>{{ reporter.MobileNumber }}</td>
+            <td>{{ reporter.Qualifications }}</td>
+            <td>{{ reporter.Speciality }}</td>
+            <td>{{ reporter.Address }}</td>
+            <td>{{ reporter.Locality }}</td>
+            <td><a class="btn btn-info" Id="UpdateReporter/{{ reporter.id }}" href="/UpdateReporter/{{ reporter.id }}">Update</a></td>
+            <td>
+                <button type="button" id="deleteReporter" class="btn btn-danger" onClick="deleteReporter({{ reporter.id }})">Delete</button></td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<center>
+    {% for page_num in Reporters.iter_pages(left_edge=3, right_edge=3, left_current=1, right_current=1) %} {% if page_num %} {% if Reporters.page == page_num%}
+    <a class="btn btn-info mb-4" href="{{ url_for('views.reporters',page=page_num) }}">{{ page_num }}</a> {% else %}
+    <a class="btn btn-outline-info mb-4" href="{{ url_for('views.reporters',page=page_num) }}">{{ page_num }}</a> {% endif %} {% else %}.....{% endif %} {% endfor %} {% endblock %}
+</center>

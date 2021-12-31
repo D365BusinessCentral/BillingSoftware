@@ -1,0 +1,45 @@
+{% extends "base.html" %} {% block title %}Employee{% endblock %} {% block employeenavbar %}
+<a class="nav-item nav-link" id="AddEmployee" href="/AddEmployee">Add Employee</a> {% endblock %} {% block content %}
+
+
+<h3 align="center">Employees</h3>
+<table class="table table-hover table-dark">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>NAME</th>
+            <th>MOBILE</th>
+            <th>ACTIVE</th>
+            <th>DESIGNATION</th>
+            <th>LOCATION</th>
+            <th>DOJ</th>
+            <th>WAGES</th>
+            <th>DA</th>
+            <th>MODIFY</th>
+            <th>DELETE</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for EmployeeData in employeeList.items %}
+        <tr>
+            <th scope="row">{{ EmployeeData.id }}</th>
+            <td>{{ EmployeeData.Name }}</td>
+            <td>{{ EmployeeData.mobile_number }}</td>
+            <td>{{ EmployeeData.isActive }}</td>
+            <td>{{ EmployeeData.Designation }}</td>
+            <td>{{ EmployeeData.Location }}</td>
+            <td>{{ EmployeeData.DOJ }}</td>
+            <td>{{ EmployeeData.WagesPerMonth }}</td>
+            <td>{{ EmployeeData.DailyAllowance }}</td>
+            <td><a class="btn btn-info" Id="UpdateEmployee/{{ EmployeeData.id }}" href="/UpdateEmployee/{{ EmployeeData.id }}">Update</a></td>
+            <td>
+                <button type="button" id="deleteEmployee" class="btn btn-danger" onClick="deleteEmployee({{ EmployeeData.id }})">Delete</button></td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<center>
+    {% for page_num in employeeList.iter_pages(left_edge=3, right_edge=3, left_current=1, right_current=1) %} {% if page_num %} {% if employeeList.page == page_num%}
+    <a class="btn btn-info mb-4" href="{{ url_for('views.employees',page=page_num) }}">{{ page_num }}</a> {% else %}
+    <a class="btn btn-outline-info mb-4" href="{{ url_for('views.employees',page=page_num) }}">{{ page_num }}</a> {% endif %} {% else %}.....{% endif %} {% endfor %} {% endblock %}
+</center>

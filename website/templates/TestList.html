@@ -1,0 +1,57 @@
+{% extends "base.html" %} {% block title %}Tests{% endblock %} {% block testnavbar %}
+<a class="nav-item nav-link" id="TestTypes" href="/TestTypes">Test Types</a>
+<a class="nav-item nav-link" id="AddTest" href="/AddTest">Add Test</a> {% endblock %} {% block content %}
+
+
+<!-- <select class="custom-select" id="TestTypeId">
+    <option selected>Select Test Type</option>
+    {% for TestType in user.Test_Types %}
+        <option value="{{ TestType.id }}">{{ TestType.Name }}</option>
+    {% endfor %}
+</select>
+<br />
+<br /> -->
+
+<h3 align="center">Tests</h3>
+<table class="table table-hover table-dark">
+    <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">TYPE</th>
+            <th scope="col">NAME</th>
+            <th scope="col">FEE</th>
+            <th scope="col">DCP</th>
+            <th scope="col">ACP</th>
+            <th scope="col">REPORTING</th>
+            <!-- <th scope="col">NET AMOUNT</th> -->
+            <th scope="col">FILM</th>
+            <th scope="col">CONT.</th>
+            <th scope="col">MODIFY</th>
+            <th scope="col">DELETE</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for TestData in TestsList.items %}
+        <tr>
+            <th scope="row">{{ TestData.id }}</th>
+            <td>{{ TestData.Test_Type_Name }}</td>
+            <td>{{ TestData.Name }}</td>
+            <td>{{ TestData.Fee_Amount }}</td>
+            <td>{{ TestData.DCP_Amount }}</td>
+            <td>{{ TestData.ACP_Amount }}</td>
+            <td>{{ TestData.Reporting_Amount }}</td>
+            <!-- <td>{{ TestData.Net_Amount }}</td> -->
+            <td>{{ TestData.Film_Quantity }}</td>
+            <td>{{ TestData.Contrast }}</td>
+            <td><a class="btn btn-info" Id="UpdateTest/{{ TestData.id }}" href="/UpdateTest/{{ TestData.id }}">Update</a></td>
+            <td>
+                <button type="button" id="deleteTest" class="btn btn-danger" onClick="deleteTest({{ TestData.id }})">Delete</button></td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<center>
+    {% for page_num in TestsList.iter_pages(left_edge=3, right_edge=3, left_current=1, right_current=1) %} {% if page_num %} {% if TestsList.page == page_num%}
+    <a class="btn btn-info mb-4" href="{{ url_for('views.tests',page=page_num) }}">{{ page_num }}</a> {% else %}
+    <a class="btn btn-outline-info mb-4" href="{{ url_for('views.tests',page=page_num) }}">{{ page_num }}</a> {% endif %} {% else %}.....{% endif %} {% endfor %} {% endblock %}
+</center>

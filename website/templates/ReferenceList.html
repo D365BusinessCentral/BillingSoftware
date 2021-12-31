@@ -1,0 +1,49 @@
+{% extends "base.html" %} {% block title %}Reference{% endblock %}
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+{% block referencenavbar %}
+<a class="nav-item nav-link" id="AddReference" href="/AddReference">Add Reference</a> {% endblock %} {% block content %}
+
+<h4 align="center">References</h4>
+<table class="table table-hover table-dark" align="center">
+    <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">NAME</th>
+            <th scope="col">DEGREE</th>
+            <th scope="col">MOBILE</th>
+            <th scope="col">SPECIALITY</th>
+            <th scope="col">PRO</th>
+            <th scope="col">ADDRESS</th>
+            <th scope="col">LOCALITY</th>
+            <th scope="col">CREATED ON</th>
+            <th scope="col">MODIFY</th>
+            <th scope="col">DELETE</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for reference in ReferencesPerPage.items %}
+        <tr>
+            <th scope="row">{{ reference.id }}</th>
+            <td>{{ reference.Name }}</td>
+            <td>{{ reference.Degree }}</td>
+            <td>{{ reference.MobileNumber }}</td>
+            <td>{{ reference.Speciality }}</td>
+            <td>{{ reference.VisitPRO }}</td>
+            <td>{{ reference.Address }}</td>
+            <td>{{ reference.Locality }}</td>
+            <td>{{ reference.CreatedOn }}</td>
+            <td><a class="btn btn-info" Id="UpdateReference/{{ reference.id }}" href="/UpdateReference/{{ reference.id }}">Update</a></td>
+            <td>
+                <button type="button" id="deleleRef" class="btn btn-danger" onClick="deleteReference({{ reference.id }})">Delete</button></td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<center>
+    {% for page_num in ReferencesPerPage.iter_pages(left_edge=3, right_edge=3, left_current=1, right_current=1) %} {% if page_num %} {% if ReferencesPerPage.page == page_num%}
+    <a class="btn btn-info mb-4" href="{{ url_for('views.references',page=page_num) }}">{{ page_num }}</a> {% else %}
+    <a class="btn btn-outline-info mb-4" href="{{ url_for('views.references',page=page_num) }}">{{ page_num }}</a> {% endif %} {% else %}.....{% endif %} {% endfor %} {% endblock %}
+</center>

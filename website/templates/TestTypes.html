@@ -1,0 +1,25 @@
+{% extends "base.html" %} {% block title %}Test Types{% endblock %} {% block testnavbar %}
+<a class="nav-item nav-link" id="Tests" href="/Tests">Test List</a> {% endblock %} {% block content %}
+
+<h3 align="center">Test Types</h3>
+<ul class="list-group list-group-flush" id="notes">
+    {% for testType in user.Test_Types %}
+    <li class="list-group-item">
+        {{ testType.Name }}
+        <button type="button" class="close" onClick="deleteTestType({{ testType.id }})">
+      <span aria-hidden="true">&times;</span>
+    </button>
+    </li>
+    {% endfor %}
+</ul>
+<br />
+<form method="POST">
+    <h3 align="center">Add New Test Types</h3>
+    <div class="form-group">
+        <label for="testTypeName">Name</label>
+        <input type="Text" maxlength="50" class="form-control" id="testTypeName" name="testTypeName" placeholder="Enter Test Type Name" />
+    </div>
+    <br />
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+{% endblock %}

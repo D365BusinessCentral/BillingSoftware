@@ -1,0 +1,109 @@
+{% extends "base.html" %} {% block title %}Add Employee{% endblock %} {% block employeenavbar %}
+<a class="nav-item nav-link" id="Employees" href="/Employees">Employees</a> {% endblock %} {% block content %}
+
+
+<form method="POST">
+    <div class="form-row">
+        <div class="col-md-4 mb-3">
+            <label for="EmpName">Name</label>
+            <input type="text" maxlength="80" class="form-control is-valid" id="EmpName" name="EmpName" placeholder="Emplopyee Name" value="" required>
+        </div>
+        <div class="col-md-4 mb-3">
+            <label for="EmpEmail">Email</label>
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="ForEmpEmail">@</span>
+                </div>
+                <input type="text" maxlength="80" class="form-control" id="EmpEmail" name="EmpEmail" placeholder="John@gmail.com" aria-describedby="inputGroupPrepend3">
+            </div>
+        </div>
+        <div class="col-md-4 mb-3">
+            <label for="EmpMobile">Mobile No.</label>
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="ForEmpMobile">No.</span>
+                </div>
+                <input type="number" maxlength="10" class="form-control" id="EmpMobile" name="EmpMobile" placeholder="9900099000" aria-describedby="inputGroupPrepend3">
+            </div>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="col-md-4 mb-3">
+            <label for="IsActive">Status</label>
+            <select class="form-control" id="IsActive" name="IsActive">
+                <option class="form-control is-valid" selected>Select Status</option>
+                <option class="form-control is-valid" value="0">Active</option>
+                <option class="form-control is-valid" value="1">Resigned</option>
+            </select>
+        </div>
+        <div class="col-md-4 mb-3">
+            <label for="EmpDesignation">Designation</label>
+            <div class="input-group">
+                <input type="text" maxlength="50" class="form-control" id="EmpDesignation" name="EmpDesignation" placeholder="Designation" aria-describedby="EmpDesignation" required>
+            </div>
+        </div>
+        <div class="col-md-4 mb-3">
+            <label for="EmpLocation">Location</label>
+            <div class="input-group">
+                <input type="text" maxlength="50" class="form-control" id="EmpLocation" name="EmpLocation" placeholder="Location" aria-describedby="EmpLocation" required>
+            </div>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="col-md-4 mb-3">
+            <label for="EmpPAN">PAN No.</label>
+            <div class="input-group">
+                <input type="text" maxlength="10" class="form-control" id="EmpPAN" name="EmpPAN" placeholder="CYDKT7189F" aria-describedby="EmpPAN">
+            </div>
+        </div>
+        <div class="col-md-4 mb-3">
+            <label for="EmpUIDAI">AADHAR No.</label>
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="ForEmpUIDAI">ID</span>
+                </div>
+                <input type="text" maxlength="16" class="form-control" id="EmpUIDAI" name="EmpUIDAI" placeholder="UIDAI" aria-describedby="EmpUIDAI">
+            </div>
+        </div>
+        <div class="col-md-4 mb-3">
+            <label for="DOJ">Joining Date</label>
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="ForDOJ">DOJ</span>
+                </div>
+                <input type="date" class="form-control" id="DOJ " name="DOJ" placeholder="" aria-describedby="DOJ" required>
+            </div>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="col-md-4 mb-3">
+            <label for="DOR">Resignation Date</label>
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="ForDOR">DOR</span>
+                </div>
+                <input type="date" class="form-control" id="DOR" name="DOR" placeholder="" aria-describedby="DOR">
+            </div>
+        </div>
+        <div class="col-md-4 mb-3">
+            <label for="EmpWages">Wages per Month</label>
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="ForEmpWages">Rs.</span>
+                </div>
+                <input type="text" maxlength="8" class="form-control" id="EmpWages" name="EmpWages" placeholder="0.00" aria-describedby="EmpWages" required>
+            </div>
+        </div>
+        <div class="col-md-4 mb-3">
+            <label for="EmpDA">Daily Allowance</label>
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="ForEmpDA">Rs.</span>
+                </div>
+                <input type="text" maxlength="5" class="form-control is-invali" id="EmpDA" name="EmpDA" placeholder="0.00 " aria-describedby="EmpDA">
+            </div>
+        </div>
+    </div>
+    <center><button class="btn btn-primary " type="submit ">Submit</button></center>
+</form>
+{% endblock %}
